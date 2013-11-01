@@ -1,4 +1,7 @@
-task :default => :bin
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new
+
+task :default => :spec
 
 desc "Run bin/ppt_main.rb"
 task :bin do
@@ -7,10 +10,10 @@ end
 
 desc "Run tests with --format documentation"
 task :test do
-  sh "rspec -Ilib test/racional_spec.rb --format documentation"
+  sh "rspec -Ilib spec/racional_spec.rb --format documentation"
 end
 
 desc "Run tests with format: html"
 task :thtml do
-  sh "rspec test/racional_spec.rb --format html > resultados.html"
+  sh "rspec spec/racional_spec.rb --format html > resultados.html"
 end
